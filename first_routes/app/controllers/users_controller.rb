@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: User.find_by(id: params[:id])
+    user = User.find_by(id: params[:id])
+    if user
+      render json: user
+    else
+      render plain: 'User not found', status: 404
+    end
   end
 
   def update

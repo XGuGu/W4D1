@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     user = User.find_by(id: params[:id])
     if user
       user.destroy
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 end
